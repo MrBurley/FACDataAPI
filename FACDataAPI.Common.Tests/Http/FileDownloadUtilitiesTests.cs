@@ -36,5 +36,23 @@ namespace FACDataAPI.Common.Tests.Http
             
             Assert.IsFalse(File.Exists(result.LocalFilePath));
         }
+
+        [Test]
+        public async Task TestDownloadFileFailure()
+        {
+            string downloadDir = Path.GetTempPath();
+            
+            Uri source = new Uri("https://badurl/badfilename.txt");
+            
+            IFileDownloadUtilities fileDownloadUtilities = new FileDownloadUtilities();
+
+            FileDownloadResult result = await fileDownloadUtilities.DownloadFile(source, downloadDir);
+            
+            Assert.False(result.Success);
+            Assert.IsNotNull(result.ErrorDetail);
+
+        }
+        
+        
     }
 }
