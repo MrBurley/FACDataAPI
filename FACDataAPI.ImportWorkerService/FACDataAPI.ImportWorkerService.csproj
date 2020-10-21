@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UserSecretsId>dotnet-FACDataAPI.ImportWorkerService-10B4A4BE-2B48-4045-B019-2F5A7B5AD40E</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.8" />
+        <PackageReference Include="Polly" Version="7.2.1" />
+    </ItemGroup>
+</Project>
