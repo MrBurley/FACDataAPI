@@ -34,6 +34,19 @@ EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tables", "Tables", "{6B2C8808-131A-4241-B03B-C0E16ECCDEA4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Import", "Import", "{42CEDAA7-B701-4EE8-8BE7-B9D7D94D1B04}"
+ProjectSection(SolutionItems) = preProject
+	Scripts\SQL\Tables\Import\agencies.sql = Scripts\SQL\Tables\Import\agencies.sql
+	Scripts\SQL\Tables\Import\cfdas.sql = Scripts\SQL\Tables\Import\cfdas.sql
+	Scripts\SQL\Tables\Import\cpas.sql = Scripts\SQL\Tables\Import\cpas.sql
+	Scripts\SQL\Tables\Import\duns.sql = Scripts\SQL\Tables\Import\duns.sql
+	Scripts\SQL\Tables\Import\eins.sql = Scripts\SQL\Tables\Import\eins.sql
+	Scripts\SQL\Tables\Import\findings.sql = Scripts\SQL\Tables\Import\findings.sql
+	Scripts\SQL\Tables\Import\general.sql = Scripts\SQL\Tables\Import\general.sql
+	Scripts\SQL\Tables\Import\incomplete.sql = Scripts\SQL\Tables\Import\incomplete.sql
+	Scripts\SQL\Tables\Import\passthrough.sql = Scripts\SQL\Tables\Import\passthrough.sql
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,5 +88,6 @@ Global
 		{1D68A746-2A6D-428A-8402-FC3DD7446B13} = {BB006832-4F8D-4720-996A-97D476B15E9A}
 		{CD8F3E54-34D1-4B9F-A2C4-54DA89D57740} = {1D68A746-2A6D-428A-8402-FC3DD7446B13}
 		{6B2C8808-131A-4241-B03B-C0E16ECCDEA4} = {1D68A746-2A6D-428A-8402-FC3DD7446B13}
+		{42CEDAA7-B701-4EE8-8BE7-B9D7D94D1B04} = {6B2C8808-131A-4241-B03B-C0E16ECCDEA4}
 	EndGlobalSection
 EndGlobal
