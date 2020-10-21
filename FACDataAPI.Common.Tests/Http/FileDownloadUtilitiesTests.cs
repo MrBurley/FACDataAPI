@@ -14,8 +14,6 @@ namespace FACDataAPI.Common.Tests.Http
         public async Task TestDownloadFileSuccess()
         {
             string downloadDir = Path.GetTempPath();
-            //string downloadFile = Path.GetTempFileName();
-            //string targetPath = Path.Combine(downloadDir, downloadFile);
             
             Uri source = new Uri("https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf");
             
