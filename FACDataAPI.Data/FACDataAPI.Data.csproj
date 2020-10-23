@@ -12,7 +12,11 @@
 
     <ItemGroup>
       <Folder Include="Api" />
-      <Folder Include="Import" />
+      <Folder Include="Import\Repositories" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FACDataAPI.Common\FACDataAPI.Common.csproj" />
     </ItemGroup>
 
 </Project>

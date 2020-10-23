@@ -30,6 +30,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schemas", "Schemas", "{CD8F3E54-34D1-4B9F-A2C4-54DA89D57740}"
 ProjectSection(SolutionItems) = preProject
 	Scripts\SQL\Schemas\import_schema.sql = Scripts\SQL\Schemas\import_schema.sql
+	Scripts\SQL\Schemas\general_schema.sql = Scripts\SQL\Schemas\general_schema.sql
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tables", "Tables", "{6B2C8808-131A-4241-B03B-C0E16ECCDEA4}"
@@ -45,7 +46,22 @@ ProjectSection(SolutionItems) = preProject
 	Scripts\SQL\Tables\Import\general.sql = Scripts\SQL\Tables\Import\general.sql
 	Scripts\SQL\Tables\Import\incomplete.sql = Scripts\SQL\Tables\Import\incomplete.sql
 	Scripts\SQL\Tables\Import\passthrough.sql = Scripts\SQL\Tables\Import\passthrough.sql
+	Scripts\SQL\Tables\Import\formatted-findings-text.sql = Scripts\SQL\Tables\Import\formatted-findings-text.sql
+	Scripts\SQL\Tables\Import\findings-text.sql = Scripts\SQL\Tables\Import\findings-text.sql
+	Scripts\SQL\Tables\Import\formatted-cap-text.sql = Scripts\SQL\Tables\Import\formatted-cap-text.sql
+	Scripts\SQL\Tables\Import\cap-text.sql = Scripts\SQL\Tables\Import\cap-text.sql
+	Scripts\SQL\Tables\Import\revisions.sql = Scripts\SQL\Tables\Import\revisions.sql
 EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FACDataAPI.Import", "FACDataAPI.Import\FACDataAPI.Import.csproj", "{DCF19E6B-1BFC-4488-9E77-6C77D5791D68}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "General", "General", "{27D5AD74-BF31-419D-A5B3-C9551C8ACA95}"
+ProjectSection(SolutionItems) = preProject
+	Scripts\SQL\Tables\General\archived_system_logs.sql = Scripts\SQL\Tables\General\archived_system_logs.sql
+	Scripts\SQL\Tables\General\system_log.sql = Scripts\SQL\Tables\General\system_log.sql
+EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FACDataAPI.Data.Tests", "FACDataAPI.Data.Tests\FACDataAPI.Data.Tests.csproj", "{6EA68FE9-9CFF-40BE-87EF-A8CE5266FFF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +93,14 @@ Global
 		{5507477E-DD20-4946-9548-E5DCCD235C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5507477E-DD20-4946-9548-E5DCCD235C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5507477E-DD20-4946-9548-E5DCCD235C81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCF19E6B-1BFC-4488-9E77-6C77D5791D68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCF19E6B-1BFC-4488-9E77-6C77D5791D68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCF19E6B-1BFC-4488-9E77-6C77D5791D68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCF19E6B-1BFC-4488-9E77-6C77D5791D68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EA68FE9-9CFF-40BE-87EF-A8CE5266FFF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EA68FE9-9CFF-40BE-87EF-A8CE5266FFF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EA68FE9-9CFF-40BE-87EF-A8CE5266FFF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EA68FE9-9CFF-40BE-87EF-A8CE5266FFF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{150A61FF-AE5A-4E39-B808-6E1440BAD2AB} = {01DDEC12-ADA1-431B-AFD9-1BA8F1940CE5}
@@ -89,5 +113,8 @@ Global
 		{CD8F3E54-34D1-4B9F-A2C4-54DA89D57740} = {1D68A746-2A6D-428A-8402-FC3DD7446B13}
 		{6B2C8808-131A-4241-B03B-C0E16ECCDEA4} = {1D68A746-2A6D-428A-8402-FC3DD7446B13}
 		{42CEDAA7-B701-4EE8-8BE7-B9D7D94D1B04} = {6B2C8808-131A-4241-B03B-C0E16ECCDEA4}
+		{DCF19E6B-1BFC-4488-9E77-6C77D5791D68} = {E0868330-9D20-4B6A-AA3A-1BAABFE8A0FC}
+		{27D5AD74-BF31-419D-A5B3-C9551C8ACA95} = {6B2C8808-131A-4241-B03B-C0E16ECCDEA4}
+		{6EA68FE9-9CFF-40BE-87EF-A8CE5266FFF8} = {74601587-7134-41F8-9729-90FD2A149A11}
 	EndGlobalSection
 EndGlobal

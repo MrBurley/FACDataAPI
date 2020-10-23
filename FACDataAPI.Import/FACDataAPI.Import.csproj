@@ -4,8 +4,4 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="MimeMapping" Version="1.0.1.30" />
-    </ItemGroup>
-
 </Project>
