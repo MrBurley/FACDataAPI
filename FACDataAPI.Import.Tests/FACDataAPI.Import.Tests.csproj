@@ -15,6 +15,7 @@
     <ItemGroup>
       <ProjectReference Include="..\FACDataAPI.Common\FACDataAPI.Common.csproj" />
       <ProjectReference Include="..\FACDataAPI.Data\FACDataAPI.Data.csproj" />
+      <ProjectReference Include="..\FACDataAPI.Import\FACDataAPI.Import.csproj" />
     </ItemGroup>
 
     <ItemGroup>

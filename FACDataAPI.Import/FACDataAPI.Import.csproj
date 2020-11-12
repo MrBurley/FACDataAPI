@@ -4,4 +4,14 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FACDataAPI.Common\FACDataAPI.Common.csproj" />
+      <ProjectReference Include="..\FACDataAPI.Data\FACDataAPI.Data.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CsvHelper" Version="15.0.8" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0-rc.2.20475.5" />
+    </ItemGroup>
+
 </Project>

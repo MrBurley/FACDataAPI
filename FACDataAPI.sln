@@ -51,6 +51,7 @@ ProjectSection(SolutionItems) = preProject
 	Scripts\SQL\Tables\Import\formatted-cap-text.sql = Scripts\SQL\Tables\Import\formatted-cap-text.sql
 	Scripts\SQL\Tables\Import\cap-text.sql = Scripts\SQL\Tables\Import\cap-text.sql
 	Scripts\SQL\Tables\Import\revisions.sql = Scripts\SQL\Tables\Import\revisions.sql
+	Scripts\SQL\Tables\Import\import_log.sql = Scripts\SQL\Tables\Import\import_log.sql
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FACDataAPI.Import", "FACDataAPI.Import\FACDataAPI.Import.csproj", "{DCF19E6B-1BFC-4488-9E77-6C77D5791D68}"
@@ -62,6 +63,8 @@ ProjectSection(SolutionItems) = preProject
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FACDataAPI.Data.Tests", "FACDataAPI.Data.Tests\FACDataAPI.Data.Tests.csproj", "{6EA68FE9-9CFF-40BE-87EF-A8CE5266FFF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FACDataAPI.Import.Tests", "FACDataAPI.Import.Tests\FACDataAPI.Import.Tests.csproj", "{BEE23BD6-D2A4-448C-AF7D-01522DA9F4FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +104,10 @@ Global
 		{6EA68FE9-9CFF-40BE-87EF-A8CE5266FFF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EA68FE9-9CFF-40BE-87EF-A8CE5266FFF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EA68FE9-9CFF-40BE-87EF-A8CE5266FFF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEE23BD6-D2A4-448C-AF7D-01522DA9F4FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEE23BD6-D2A4-448C-AF7D-01522DA9F4FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEE23BD6-D2A4-448C-AF7D-01522DA9F4FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEE23BD6-D2A4-448C-AF7D-01522DA9F4FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{150A61FF-AE5A-4E39-B808-6E1440BAD2AB} = {01DDEC12-ADA1-431B-AFD9-1BA8F1940CE5}
@@ -116,5 +123,6 @@ Global
 		{DCF19E6B-1BFC-4488-9E77-6C77D5791D68} = {E0868330-9D20-4B6A-AA3A-1BAABFE8A0FC}
 		{27D5AD74-BF31-419D-A5B3-C9551C8ACA95} = {6B2C8808-131A-4241-B03B-C0E16ECCDEA4}
 		{6EA68FE9-9CFF-40BE-87EF-A8CE5266FFF8} = {74601587-7134-41F8-9729-90FD2A149A11}
+		{BEE23BD6-D2A4-448C-AF7D-01522DA9F4FD} = {74601587-7134-41F8-9729-90FD2A149A11}
 	EndGlobalSection
 EndGlobal

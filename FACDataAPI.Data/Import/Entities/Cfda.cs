@@ -1,6 +1,6 @@
 namespace FACDataAPI.Data.Import.Entities
 {
-    public class Cfda
+    public class Cfda : IImportEntity
     {
         public string Audityear { get; set; }
         public string Dbkey { get; set; }
@@ -28,5 +28,7 @@ namespace FACDataAPI.Data.Import.Entities
         public string LoanBalance { get; set; }
         public string FindingsCount { get; set; }
         public string ElecauditsId { get; set; }
+        public string OtherClustername { get; set; }
+        public string CFDAProgramname{ get; set; }
     }
 }
