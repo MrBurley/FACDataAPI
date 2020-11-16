@@ -112,7 +112,7 @@ namespace FACDataAPI.Import.Tests
                             agencyResult.RecordsImported);
 
 
-                //Agency
+                //CapText
                 ImportResult capTextResult = 
                     results.FirstOrDefault
                         (x => x.ImportArea == ImportResultType.CapText);
