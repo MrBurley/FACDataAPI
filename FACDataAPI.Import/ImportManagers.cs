@@ -21,6 +21,9 @@ namespace FACDataAPI.Import
     {
         private IImporter<Cfda> CfdaImporter { get; set; }
         private IImporter<General> GeneralImporter { get; set; }
+        private IImporter<Agency> AgencyImporter { get; set; }
+        private IImporter<CapText> CapTextImporter { get; set; }
+
         private IFileDownloadUtilities FileDownloadUtilities { get; set; }
         private IZipUtility ZipUtility { get; set; }
         private CsvImportSettings CsvImportSettings { get; set; }
@@ -31,7 +34,9 @@ namespace FACDataAPI.Import
             IZipUtility zipUtility,
             IImporter<Cfda> cfdaImporter,
             CsvImportSettings importSettings,
-            IImporter<General> generalImporter
+            IImporter<General> generalImporter,
+            IImporter<Agency> agencyImporter,
+            IImporter<CapText> captextImporter
         )
         {
             FileDownloadUtilities = fileDownloadUtilities;
@@ -39,6 +44,8 @@ namespace FACDataAPI.Import
             CfdaImporter = cfdaImporter;
             CsvImportSettings = importSettings;
             GeneralImporter = generalImporter;
+            AgencyImporter = agencyImporter;
+            CapTextImporter = captextImporter;
         }
 
         public async Task<IList<ImportResult>> PerformImport()
@@ -58,8 +65,10 @@ namespace FACDataAPI.Import
             {
                 ZipUtility.UnZipFile(downloadResult.LocalFilePath, downloadResult.TargetDirectory);
                 
+                results.Add(await CapTextImporter.Import());
                 results.Add(await CfdaImporter.Import());
                 results.Add(await GeneralImporter.Import());
+                results.Add(await AgencyImporter.Import());
             }
 
             return results;

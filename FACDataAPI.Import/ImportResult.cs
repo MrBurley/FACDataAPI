@@ -9,7 +9,9 @@ namespace FACDataAPI.Import
     public enum ImportResultType
     {
         Cfda = 0,
-        General = 1
+        General = 1,
+        Agency = 2,
+        CapText = 3
     }
     
     public class ImportResult

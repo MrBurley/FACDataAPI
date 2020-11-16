@@ -1,11 +1,11 @@
 CREATE TABLE import.captext
 (
     id             serial not null,
-    seq_number     varchar(4),
-    dbkey          varchar(10),
-    audityear      varchar(4),
-    findingrefnums varchar(100),
+    seq_number     text,
+    dbkey          text,
+    audityear      text,
+    findingrefnums text,
     text           text,
-    chartstables   varchar(1),
+    chartstables   text,
     CONSTRAINT pk_import_captext PRIMARY KEY ("id")
 );

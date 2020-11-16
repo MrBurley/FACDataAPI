@@ -39,8 +39,12 @@ namespace FACDataAPI.Import.Tests
             services.AddTransient<IZipUtility, ZipUtility>();
             services.AddTransient<IBulkImportRepository<Cfda>, CfdaRepository>();
             services.AddTransient<IBulkImportRepository<General>, GeneralRepository>();
+            services.AddTransient<IBulkImportRepository<Agency>, AgencyRepository>();
+            services.AddTransient<IBulkImportRepository<CapText>, CapTextRepository>();
             services.AddTransient<IImporter<Cfda>, CfdaCsvImporter>();
             services.AddTransient<IImporter<General>, GeneralCsvImporter>();
+            services.AddTransient<IImporter<Agency>, AgencyCsvImporter>();
+            services.AddTransient<IImporter<CapText>, CapTextCsvImporter>();
             services.AddTransient<IImportManager, CsvImportManager>();
          
 
@@ -96,7 +100,30 @@ namespace FACDataAPI.Import.Tests
                 Assert.True(await ServiceProvider.GetService<IBulkImportRepository<General>>().CurrentRecords() ==
                             generalResult.RecordsImported);
                 
+                //Agency
+                ImportResult agencyResult = 
+                    results.FirstOrDefault
+                        (x => x.ImportArea == ImportResultType.Agency);
+                
+                Assert.IsNotNull(agencyResult);
+                Assert.True(agencyResult.Success);
+                Assert.True(agencyResult.RecordsImported > 0);
+                Assert.True(await ServiceProvider.GetService<IBulkImportRepository<Agency>>().CurrentRecords() ==
+                            agencyResult.RecordsImported);
 
+
+                //Agency
+                ImportResult capTextResult = 
+                    results.FirstOrDefault
+                        (x => x.ImportArea == ImportResultType.CapText);
+                
+                Assert.IsNotNull(capTextResult);
+                Assert.True(capTextResult.Success);
+                Assert.True(capTextResult.RecordsImported > 0);
+                Assert.True(await ServiceProvider.GetService<IBulkImportRepository<CapText>>().CurrentRecords() ==
+                            capTextResult.RecordsImported);
+
+                
                 await importManager.CleanEnvironment();
             }
             else
