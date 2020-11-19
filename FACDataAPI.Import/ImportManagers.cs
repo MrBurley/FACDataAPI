@@ -24,6 +24,10 @@ namespace FACDataAPI.Import
         private IImporter<Agency> AgencyImporter { get; set; }
         private IImporter<CapText> CapTextImporter { get; set; }
 
+        private IImporter<Cpa> CpaImporter { get; set; }
+        private IImporter<Dun> DunImporter { get; set; }
+        private IImporter<Ein> EinImporter { get; set; }
+        private IImporter<Finding> FindingImporter { get; set; }
         private IFileDownloadUtilities FileDownloadUtilities { get; set; }
         private IZipUtility ZipUtility { get; set; }
         private CsvImportSettings CsvImportSettings { get; set; }
@@ -36,7 +40,11 @@ namespace FACDataAPI.Import
             CsvImportSettings importSettings,
             IImporter<General> generalImporter,
             IImporter<Agency> agencyImporter,
-            IImporter<CapText> captextImporter
+            IImporter<CapText> captextImporter,
+            IImporter<Cpa> cpaImporter,
+            IImporter<Dun> dunImporter,
+            IImporter<Ein> einImporter,
+            IImporter<Finding> findingImporter
         )
         {
             FileDownloadUtilities = fileDownloadUtilities;
@@ -46,6 +54,10 @@ namespace FACDataAPI.Import
             GeneralImporter = generalImporter;
             AgencyImporter = agencyImporter;
             CapTextImporter = captextImporter;
+            CpaImporter = cpaImporter;
+            DunImporter = dunImporter;
+            EinImporter = einImporter;
+            FindingImporter = findingImporter;
         }
 
         public async Task<IList<ImportResult>> PerformImport()
@@ -65,10 +77,16 @@ namespace FACDataAPI.Import
             {
                 ZipUtility.UnZipFile(downloadResult.LocalFilePath, downloadResult.TargetDirectory);
                 
+                results.Add(await FindingImporter.Import());
+                results.Add(await EinImporter.Import());
+                results.Add(await DunImporter.Import());
+                results.Add(await CpaImporter.Import());
                 results.Add(await CapTextImporter.Import());
-                results.Add(await CfdaImporter.Import());
-                results.Add(await GeneralImporter.Import());
                 results.Add(await AgencyImporter.Import());
+                results.Add(await GeneralImporter.Import());
+                results.Add(await CfdaImporter.Import());
+                
+                
             }
 
             return results;

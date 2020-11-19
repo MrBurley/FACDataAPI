@@ -11,7 +11,17 @@ namespace FACDataAPI.Import
         Cfda = 0,
         General = 1,
         Agency = 2,
-        CapText = 3
+        CapText = 3,
+        Cpas = 4,
+        Duns = 5,
+        Eins = 6,
+        Findings = 7,
+        FindingsText = 8,
+        FormattedCapText = 9,
+        FormattedFindingsText = 10,
+        Passthrough = 11,
+        Revisions = 12,
+        Incomplete = 13
     }
     
     public class ImportResult

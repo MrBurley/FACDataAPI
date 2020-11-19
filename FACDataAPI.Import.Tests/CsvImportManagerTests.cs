@@ -41,10 +41,18 @@ namespace FACDataAPI.Import.Tests
             services.AddTransient<IBulkImportRepository<General>, GeneralRepository>();
             services.AddTransient<IBulkImportRepository<Agency>, AgencyRepository>();
             services.AddTransient<IBulkImportRepository<CapText>, CapTextRepository>();
+            services.AddTransient<IBulkImportRepository<Cpa>, CpaRepository>();
+            services.AddTransient<IBulkImportRepository<Dun>, DunRepository>();
+            services.AddTransient<IBulkImportRepository<Ein>, EinRepository>();
+            services.AddTransient<IBulkImportRepository<Finding>, FindingRepository>();
             services.AddTransient<IImporter<Cfda>, CfdaCsvImporter>();
             services.AddTransient<IImporter<General>, GeneralCsvImporter>();
             services.AddTransient<IImporter<Agency>, AgencyCsvImporter>();
             services.AddTransient<IImporter<CapText>, CapTextCsvImporter>();
+            services.AddTransient<IImporter<Cpa>, CpaCsvImporter>();
+            services.AddTransient<IImporter<Dun>, DunCsvImporter>();
+            services.AddTransient<IImporter<Ein>, EinCsvImporter>();
+            services.AddTransient<IImporter<Finding>, FindingCsvImporter>();
             services.AddTransient<IImportManager, CsvImportManager>();
          
 
@@ -123,8 +131,51 @@ namespace FACDataAPI.Import.Tests
                 Assert.True(await ServiceProvider.GetService<IBulkImportRepository<CapText>>().CurrentRecords() ==
                             capTextResult.RecordsImported);
 
+                //Cpa
+                ImportResult cpaResult = 
+                    results.FirstOrDefault
+                        (x => x.ImportArea == ImportResultType.Cpas);
                 
-                await importManager.CleanEnvironment();
+                Assert.IsNotNull(cpaResult);
+                Assert.True(cpaResult.Success);
+                Assert.True(cpaResult.RecordsImported > 0);
+                Assert.True(await ServiceProvider.GetService<IBulkImportRepository<Cpa>>().CurrentRecords() ==
+                            cpaResult.RecordsImported);
+                
+                //Duns
+                ImportResult dunResult = 
+                    results.FirstOrDefault
+                        (x => x.ImportArea == ImportResultType.Duns);
+                
+                Assert.IsNotNull(dunResult);
+                Assert.True(dunResult.Success);
+                Assert.True(dunResult.RecordsImported > 0);
+                Assert.True(await ServiceProvider.GetService<IBulkImportRepository<Dun>>().CurrentRecords() ==
+                            dunResult.RecordsImported);
+                
+                //Ein
+                ImportResult einResult = 
+                    results.FirstOrDefault
+                        (x => x.ImportArea == ImportResultType.Eins);
+                
+                Assert.IsNotNull(einResult);
+                Assert.True(einResult.Success);
+                Assert.True(einResult.RecordsImported > 0);
+                Assert.True(await ServiceProvider.GetService<IBulkImportRepository<Ein>>().CurrentRecords() ==
+                            einResult.RecordsImported);
+                
+                //Findings
+                ImportResult findingResult = 
+                    results.FirstOrDefault
+                        (x => x.ImportArea == ImportResultType.Findings);
+                
+                Assert.IsNotNull(findingResult);
+                Assert.True(findingResult.Success);
+                Assert.True(findingResult.RecordsImported > 0);
+                Assert.True(await ServiceProvider.GetService<IBulkImportRepository<Finding>>().CurrentRecords() ==
+                            findingResult.RecordsImported);
+                
+                
             }
             else
             {
