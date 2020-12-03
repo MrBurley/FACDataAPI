@@ -21,7 +21,6 @@ psql -w -U $USER -h $HOST -d $TARGET_DB -f ./SQL/Tables/Import/duns.sql
 psql -w -U $USER -h $HOST -d $TARGET_DB -f ./SQL/Tables/Import/eins.sql
 psql -w -U $USER -h $HOST -d $TARGET_DB -f ./SQL/Tables/Import/findings.sql
 psql -w -U $USER -h $HOST -d $TARGET_DB -f ./SQL/Tables/Import/general.sql
-psql -w -U $USER -h $HOST -d $TARGET_DB -f ./SQL/Tables/Import/incomplete.sql
 psql -w -U $USER -h $HOST -d $TARGET_DB -f ./SQL/Tables/Import/passthrough.sql
 psql -w -U $USER -h $HOST -d $TARGET_DB -f ./SQL/Tables/Import/revisions.sql
 psql -w -U $USER -h $HOST -d $TARGET_DB -f ./SQL/Tables/Import/cap-text.sql
@@ -38,7 +37,6 @@ psql -w -U $USER -h $HOST -d $TARGET_DB -c "GRANT SELECT,INSERT,UPDATE,DELETE, T
 psql -w -U $USER -h $HOST -d $TARGET_DB -c "GRANT SELECT,INSERT,UPDATE,DELETE, TRUNCATE ON TABLE import.eins to $APP_USER"
 psql -w -U $USER -h $HOST -d $TARGET_DB -c "GRANT SELECT,INSERT,UPDATE,DELETE, TRUNCATE ON TABLE import.findings to $APP_USER"
 psql -w -U $USER -h $HOST -d $TARGET_DB -c "GRANT SELECT,INSERT,UPDATE,DELETE, TRUNCATE ON TABLE import.general to $APP_USER"
-psql -w -U $USER -h $HOST -d $TARGET_DB -c "GRANT SELECT,INSERT,UPDATE,DELETE, TRUNCATE ON TABLE import.incomplete to $APP_USER"
 psql -w -U $USER -h $HOST -d $TARGET_DB -c "GRANT SELECT,INSERT,UPDATE,DELETE, TRUNCATE ON TABLE import.passthrough to $APP_USER"
 psql -w -U $USER -h $HOST -d $TARGET_DB -c "GRANT SELECT,INSERT,UPDATE,DELETE, TRUNCATE ON TABLE import.revisions to $APP_USER"
 psql -w -U $USER -h $HOST -d $TARGET_DB -c "GRANT SELECT,INSERT,UPDATE,DELETE, TRUNCATE ON TABLE import.captext to $APP_USER"

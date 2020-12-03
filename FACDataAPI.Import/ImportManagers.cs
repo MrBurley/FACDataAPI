@@ -7,6 +7,7 @@ using FACDataAPI.Common.Http;
 using FACDataAPI.Common.IO;
 using FACDataAPI.Data.Import.Entities;
 using FACDataAPI.Data.Import.Repositories;
+using FACDataAPI.Import.CSV.Maps;
 
 namespace FACDataAPI.Import
 {
@@ -15,9 +16,9 @@ namespace FACDataAPI.Import
         Task<IList<ImportResult>> PerformImport();
         Task CleanEnvironment();
     }
-    
-    
-    public class CsvImportManager: IImportManager
+
+
+    public class CsvImportManager : IImportManager
     {
         private IImporter<Cfda> CfdaImporter { get; set; }
         private IImporter<General> GeneralImporter { get; set; }
@@ -28,6 +29,11 @@ namespace FACDataAPI.Import
         private IImporter<Dun> DunImporter { get; set; }
         private IImporter<Ein> EinImporter { get; set; }
         private IImporter<Finding> FindingImporter { get; set; }
+        private IImporter<FindingText> FindingTextImporter { get; set; }
+        private IImporter<FormattedCapText> FormattedCapTextImporter { get; set; }
+        private IImporter<FormattedFindingsText> FormattedFindingsTextImporter { get; set; }
+        private IImporter<Passthrough> PassthroughImporter { get; set; }
+
         private IFileDownloadUtilities FileDownloadUtilities { get; set; }
         private IZipUtility ZipUtility { get; set; }
         private CsvImportSettings CsvImportSettings { get; set; }
@@ -44,7 +50,11 @@ namespace FACDataAPI.Import
             IImporter<Cpa> cpaImporter,
             IImporter<Dun> dunImporter,
             IImporter<Ein> einImporter,
-            IImporter<Finding> findingImporter
+            IImporter<Finding> findingImporter,
+            IImporter<FindingText> findingTextImporter,
+            IImporter<FormattedCapText> formattedCapTextImporter,
+            IImporter<FormattedFindingsText> formattedFindingsTextImporter,
+            IImporter<Passthrough> passthroughImporter
         )
         {
             FileDownloadUtilities = fileDownloadUtilities;
@@ -58,6 +68,10 @@ namespace FACDataAPI.Import
             DunImporter = dunImporter;
             EinImporter = einImporter;
             FindingImporter = findingImporter;
+            FindingTextImporter = findingTextImporter;
+            FormattedCapTextImporter = formattedCapTextImporter;
+            FormattedFindingsTextImporter = formattedFindingsTextImporter;
+            PassthroughImporter = passthroughImporter;
         }
 
         public async Task<IList<ImportResult>> PerformImport()
@@ -76,7 +90,11 @@ namespace FACDataAPI.Import
             if (downloadResult.Success)
             {
                 ZipUtility.UnZipFile(downloadResult.LocalFilePath, downloadResult.TargetDirectory);
-                
+
+                results.Add(await PassthroughImporter.Import());
+                results.Add(await FormattedFindingsTextImporter.Import());
+                results.Add(await FormattedCapTextImporter.Import());
+                results.Add(await FindingTextImporter.Import());
                 results.Add(await FindingImporter.Import());
                 results.Add(await EinImporter.Import());
                 results.Add(await DunImporter.Import());

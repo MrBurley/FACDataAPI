@@ -44,7 +44,6 @@ ProjectSection(SolutionItems) = preProject
 	Scripts\SQL\Tables\Import\eins.sql = Scripts\SQL\Tables\Import\eins.sql
 	Scripts\SQL\Tables\Import\findings.sql = Scripts\SQL\Tables\Import\findings.sql
 	Scripts\SQL\Tables\Import\general.sql = Scripts\SQL\Tables\Import\general.sql
-	Scripts\SQL\Tables\Import\incomplete.sql = Scripts\SQL\Tables\Import\incomplete.sql
 	Scripts\SQL\Tables\Import\passthrough.sql = Scripts\SQL\Tables\Import\passthrough.sql
 	Scripts\SQL\Tables\Import\formatted-findings-text.sql = Scripts\SQL\Tables\Import\formatted-findings-text.sql
 	Scripts\SQL\Tables\Import\findings-text.sql = Scripts\SQL\Tables\Import\findings-text.sql

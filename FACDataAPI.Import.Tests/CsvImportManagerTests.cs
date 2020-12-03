@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using FACDataAPI.Common.Tests;
 using FACDataAPI.Data.Import.Entities;
 using FACDataAPI.Import.Csv;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace FACDataAPI.Import.Tests
 {
@@ -45,6 +46,10 @@ namespace FACDataAPI.Import.Tests
             services.AddTransient<IBulkImportRepository<Dun>, DunRepository>();
             services.AddTransient<IBulkImportRepository<Ein>, EinRepository>();
             services.AddTransient<IBulkImportRepository<Finding>, FindingRepository>();
+            services.AddTransient<IBulkImportRepository<Passthrough>, PassthroughRepository>();
+            services.AddTransient<IBulkImportRepository<FindingText>, FindingTextRepository>();
+            services.AddTransient<IBulkImportRepository<FormattedCapText>, FormattedCapTextRepository>();
+            services.AddTransient<IBulkImportRepository<FormattedFindingsText>, FormattedFindingTextRepository>();
             services.AddTransient<IImporter<Cfda>, CfdaCsvImporter>();
             services.AddTransient<IImporter<General>, GeneralCsvImporter>();
             services.AddTransient<IImporter<Agency>, AgencyCsvImporter>();
@@ -53,6 +58,10 @@ namespace FACDataAPI.Import.Tests
             services.AddTransient<IImporter<Dun>, DunCsvImporter>();
             services.AddTransient<IImporter<Ein>, EinCsvImporter>();
             services.AddTransient<IImporter<Finding>, FindingCsvImporter>();
+            services.AddTransient<IImporter<FindingText>, FindingTextCsvImporter>();
+            services.AddTransient<IImporter<FormattedCapText>, FormattedCapTextImporter>();
+            services.AddTransient<IImporter<FormattedFindingsText>, FormattedFindingTextCsvImporter>();
+            services.AddTransient<IImporter<Passthrough>, PassthroughCsvImporter>();
             services.AddTransient<IImportManager, CsvImportManager>();
          
 
@@ -174,6 +183,51 @@ namespace FACDataAPI.Import.Tests
                 Assert.True(findingResult.RecordsImported > 0);
                 Assert.True(await ServiceProvider.GetService<IBulkImportRepository<Finding>>().CurrentRecords() ==
                             findingResult.RecordsImported);
+                
+                //Findings Text
+                ImportResult findingTextResult = 
+                    results.FirstOrDefault
+                        (x => x.ImportArea == ImportResultType.FindingsText);
+                
+                Assert.IsNotNull(findingTextResult);
+                Assert.True(findingTextResult.Success);
+                Assert.True(findingTextResult.RecordsImported > 0);
+                Assert.True(await ServiceProvider.GetService<IBulkImportRepository<FindingText>>().CurrentRecords() ==
+                            findingTextResult.RecordsImported);
+                
+                //Formatted Cap Text
+                ImportResult formattedCapTextResult = 
+                    results.FirstOrDefault
+                        (x => x.ImportArea == ImportResultType.FormattedCapText);
+                
+                Assert.IsNotNull(formattedCapTextResult);
+                Assert.True(formattedCapTextResult.Success);
+                Assert.True(formattedCapTextResult.RecordsImported > 0);
+                Assert.True(await ServiceProvider.GetService<IBulkImportRepository<FormattedCapText>>().CurrentRecords() ==
+                            formattedCapTextResult.RecordsImported);
+
+                //Formatted Findings Text
+                ImportResult formattedFindingTextResult = 
+                    results.FirstOrDefault
+                        (x => x.ImportArea == ImportResultType.FormattedFindingsText);
+                
+                Assert.IsNotNull(formattedFindingTextResult);
+                Assert.True(formattedFindingTextResult.Success);
+                Assert.True(formattedFindingTextResult.RecordsImported > 0);
+                Assert.True(await ServiceProvider.GetService<IBulkImportRepository<FormattedFindingsText>>().CurrentRecords() ==
+                            formattedFindingTextResult.RecordsImported);
+          
+                //Passthough
+                ImportResult passthroughResult = 
+                    results.FirstOrDefault
+                        (x => x.ImportArea == ImportResultType.Passthrough);
+                
+                Assert.IsNotNull(passthroughResult);
+                Assert.True(passthroughResult.Success);
+                Assert.True(passthroughResult.RecordsImported > 0);
+                Assert.True(await ServiceProvider.GetService<IBulkImportRepository<Passthrough>>().CurrentRecords() ==
+                            passthroughResult.RecordsImported);
+
                 
                 
             }
